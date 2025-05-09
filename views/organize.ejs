@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organize Beach Cleanup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #a8e6cf, #dcedc1);
+            color: #333;
+        }
+        .navbar {
+            background: #00796b;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar h1 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #00796b;
+        }
+        form label {
+            display: block;
+            margin: 0.5rem 0 0.25rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        form input, form select, form button {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        form input:focus, form select:focus {
+            border-color: #00796b;
+        }
+        form button {
+            background: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: #004d40;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #00796b;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <h1>Beach Cleanup Initiative</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>Organize a Beach Cleanup</h2>
+        <form action="/submit" method="POST">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+            
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="contact">Contact:</label>
+            <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+            
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="beach">Beach Name:</label>
+            <select id="beach" name="beach" required>
+                <option value="">Select a beach</option>
+                <option value="Bondi Beach">Bondi Beach</option>
+                <option value="Copacabana">Copacabana</option>
+                <option value="Santa Monica">Santa Monica</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="location">City/Town:</label>
+            <input type="text" id="location" name="location" placeholder="Enter city or town" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Beach Cleanup Initiative. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

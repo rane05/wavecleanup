@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link your CSS file -->
+    <style>
+        /* Inline CSS for demo purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+        }
+        .navbar {
+            background: #0073e6;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo h1 {
+            margin: 0;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 1rem;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 2rem;
+        }
+        #stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .stat-item {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        .stat-item h3 {
+            margin: 0.5rem 0;
+            color: #0073e6;
+        }
+        .stat-item p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            background: #0073e6;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>Beach Cleanup Stats</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/organize">Organize</a></li>
+                <li><a href="/stats">Stats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Statistics Overview</h2>
+        <div id="stats-container">
+            <!-- JavaScript will populate this dynamically -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Beach Cleanup Initiative. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Embed the data dynamically -->
+    <script>
+        const data = <%- JSON.stringify(data) %>;
+        console.log('Stats Data:', data);
+
+        // Populate the stats-container with data
+        const statsContainer = document.getElementById('stats-container');
+        if (data && Array.isArray(data)) {
+            data.forEach(stat => {
+                const statDiv = document.createElement('div');
+                statDiv.className = 'stat-item';
+                statDiv.innerHTML = `
+                    <h3>${stat.title}</h3>
+                    <p>${stat.description}</p>
+                    <p><strong>Count:</strong> ${stat.count}</p>
+                `;
+                statsContainer.appendChild(statDiv);
+            });
+        } else {
+            statsContainer.innerHTML = '<p>No statistics available at the moment. Please check back later.</p>';
+        }
+    </script>
+</body>
+</html>

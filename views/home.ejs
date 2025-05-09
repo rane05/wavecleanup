@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Cleanup - Home</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        /* Hero section styles */
+        .hero {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .hero .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .hero .btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Video container styles */
+        .video-container {
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-height: 1500px;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Campaigns section styles */
+        .campaigns {
+            padding: 20px;
+            text-align: center;
+        }
+        .campaign-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .campaign {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 300px;
+        }
+        .campaign img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #0073e6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>Beach Cleanup Initiative</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/stats">Stats</a></li>
+                <li><a href="/organize">Organize</a></li>
+                <li><a href="/donate">Donate</a></li>
+                <% if (user) { %>
+                    <li><a href="/auth/logout">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/auth/register">Register</a></li>
+                    <li><a href="/auth/login">Login</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Message -->
+    <section class="welcome-message">
+        <% if (user) { %>
+            <h1>Welcome, <%= user.username %>!</h1>
+            <p>We're thrilled to have you as part of the Wave Cleanup community. Let's make a difference together!</p>
+        <% } else { %>
+            <h1>Welcome to the Beach Cleanup Initiative!</h1>
+            <p>Sign up to join our mission or start organizing a campaign!</p>
+        <% } %>
+    </section>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>Welcome to the Beach Cleanup Initiative</h2>
+        <p>Join us in making our beaches cleaner and safer for everyone.</p>
+        <a href="/organize" class="btn">Organize Beach Cleanup</a>
+        
+        <!-- Video Section -->
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="/videos/videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Campaigns Section -->
+    <section class="campaigns">
+        <h2>Upcoming Campaigns</h2>
+        <div class="campaign-list">
+            <% campaigns.forEach(campaign => { %>
+                <div class="campaign">
+                    <img src="/images/<%= campaign.image %>" alt="Campaign Image">
+                    <div class="campaign-info">
+                        <h3><%= campaign.title %></h3>
+                        <p><strong>Location:</strong> <%= campaign.location %></p>
+                        <p><strong>Date:</strong> <%= campaign.date.toDateString() %></p>
+                        <p><strong>Organizer:</strong> <%= campaign.organizer %></p>
+                        <form action="/campaigns/register/<%= campaign._id %>" method="POST">
+                            <button type="submit" class="btn">Join This Campaign</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Beach Cleanup Initiative. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Clean Campaign</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Join Our Beach Cleaning Campaign</h1>
+    </header>
+    <main>
+        <form action="/beachClean/submit" method="POST" class="form-container">
+            <label>First Name:</label>
+            <input type="text" name="firstName" required>
+            <label>Last Name:</label>
+            <input type="text" name="lastName" required>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <label>Contact:</label>
+            <input type="text" name="contact" required>
+            <label>Date:</label>
+            <input type="date" name="date" required>
+            <label>Beach Name:</label>
+            <select name="beach" required>
+                <option value="Bondi Beach">Bondi Beach</option>
+                <option value="Waikiki Beach">Waikiki Beach</option>
+                <option value="Copacabana Beach">Copacabana Beach</option>
+                <option value="Santa Monica Beach">Santa Monica Beach</option>
+            </select>
+            <label>City/Town:</label>
+            <input type="text" name="city" required>
+            <button type="submit">Join Campaign</button>
+        </form>
+    </main>
+</body>
+</html>

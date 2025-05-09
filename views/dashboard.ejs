@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Wave Cleanup</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, <%= user.name %></h1>
+    </header>
+    <main>
+        <section>
+            <h2>My Campaigns</h2>
+            <% if (user.campaigns.length > 0) { %>
+                <ul>
+                    <% user.campaigns.forEach(campaign => { %>
+                        <li><%= campaign.title %> - <%= campaign.date.toDateString() %></li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>You haven't registered for any campaigns yet.</p>
+            <% } %>
+        </section>
+        <section>
+            <h2>Donation History</h2>
+            <% if (user.donations > 0) { %>
+                <p>Total Donations: $<%= user.donations %></p>
+            <% } else { %>
+                <p>No donations made yet.</p>
+            <% } %>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Wave Cleanup | All

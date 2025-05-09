@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns - Wave Cleanup</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Available Campaigns</h1>
+        <p>Choose a beach to join our cleanup drive!</p>
+    </header>
+    <main>
+        <section class="campaign-list">
+            <% campaigns.forEach(campaign => { %>
+                <div class="campaign">
+                    <h2><%= campaign.title %></h2>
+                    <p><strong>Location:</strong> <%= campaign.location %></p>
+                    <p><strong>Date:</strong> <%= campaign.date.toDateString() %></p>
+                    <p><strong>Organizer:</strong> <%= campaign.organizer %></p>
+                    <form action="/campaigns/register/<%= campaign._id %>" method="POST">
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Wave Cleanup | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            color: #333;
+        }
+        .navbar {
+            background: #00796b;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar h1 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+        main h2 {
+            color: #00796b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background: #00796b;
+            color: white;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        table tr:hover {
+            background: #e0f2f1;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #00796b;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>Beach Cleanup Leaderboard</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/organize">Organize</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Most Popular Beaches</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Beach</th>
+                    <th>Number of Campaigns</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (leaderboard && leaderboard.length > 0) { %>
+                    <% leaderboard.forEach(item => { %>
+                        <tr>
+                            <td><%= item._id %></td>
+                            <td><%= item.count %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="2">No data available</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Beach Cleanup Initiative. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
